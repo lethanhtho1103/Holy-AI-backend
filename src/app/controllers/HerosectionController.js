@@ -15,6 +15,10 @@ class HeroSectionController {
     const { id } = req.params;
     const { content } = req.body;
 
+    if (isNaN(id)) {
+      return res.status(400).json({ message: "Invalid ID format" });
+    }
+
     if (!content) {
       return res
         .status(400)
