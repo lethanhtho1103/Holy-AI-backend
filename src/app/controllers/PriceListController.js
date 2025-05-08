@@ -1,7 +1,6 @@
 const db = require("../../config/db");
 
 class PriceListController {
-  // Lấy tất cả các gói dịch vụ
   async getAllPlans(req, res) {
     try {
       const [plans] = await db.query(
@@ -19,7 +18,6 @@ class PriceListController {
     }
   }
 
-  // Cập nhật thông tin gói dịch vụ theo ID
   async updatePlan(req, res) {
     const { id } = req.params;
     const { name, description } = req.body;
@@ -47,7 +45,6 @@ class PriceListController {
     }
   }
 
-  // Thêm mới một gói dịch vụ
   async addPlan(req, res) {
     const { name, description } = req.body;
 
@@ -70,7 +67,6 @@ class PriceListController {
     }
   }
 
-  // Xóa gói dịch vụ theo ID
   async deletePlan(req, res) {
     const { id } = req.params;
 
@@ -91,7 +87,7 @@ class PriceListController {
       res.status(500).json({ message: "Database error" });
     }
   }
-  // Lấy tất cả các tính năng
+
   async getAllFeatures(req, res) {
     try {
       const [features] = await db.query("SELECT id, name FROM features");
@@ -107,7 +103,6 @@ class PriceListController {
     }
   }
 
-  // Lấy tính năng theo ID
   async getFeatureById(req, res) {
     const { id } = req.params;
 
@@ -128,7 +123,6 @@ class PriceListController {
     }
   }
 
-  // Thêm mới một tính năng
   async addFeature(req, res) {
     const { name } = req.body;
 
@@ -151,7 +145,6 @@ class PriceListController {
     }
   }
 
-  // Cập nhật thông tin tính năng theo ID
   async updateFeature(req, res) {
     const { id } = req.params;
     const { name } = req.body;
@@ -177,7 +170,6 @@ class PriceListController {
     }
   }
 
-  // Xóa tính năng theo ID
   async deleteFeature(req, res) {
     const { id } = req.params;
 
@@ -197,7 +189,6 @@ class PriceListController {
     }
   }
 
-  // Lấy tất cả gói dịch vụ và tính năng của từng gói
   async getAllPlansWithFeatures(req, res) {
     try {
       const [rows] = await db.query(
@@ -246,7 +237,6 @@ class PriceListController {
     }
   }
 
-  // Lấy thông tin chi tiết tính năng của gói dịch vụ theo ID
   async getPlanFeatureById(req, res) {
     const { id } = req.params;
 
@@ -271,7 +261,6 @@ class PriceListController {
     }
   }
 
-  // Thêm mới một tính năng vào gói dịch vụ
   async addPlanFeature(req, res) {
     const { plan_id, feature_id, monthly_limit, daily_limit, note } = req.body;
 
@@ -298,7 +287,6 @@ class PriceListController {
     }
   }
 
-  // Cập nhật thông tin chi tiết tính năng của gói dịch vụ
   async updatePlanFeature(req, res) {
     const { id } = req.params;
     const { plan_id, feature_id, monthly_limit, daily_limit, note } = req.body;
@@ -328,7 +316,6 @@ class PriceListController {
     }
   }
 
-  // Xóa tính năng của gói dịch vụ theo ID
   async deletePlanFeature(req, res) {
     const { id } = req.params;
 
